@@ -1,0 +1,123 @@
+{
+    "floors": [
+        {
+            "id": 0,
+            "title": "ชั้น 1",
+            "rooms": [
+                {
+                    "id": 0,
+                    "title": "ห้อง 1",
+                    "beds": [
+                        {
+                            "id": 0,
+                            "title": "Pod 1",
+                            "type": "POD"
+                        },
+                        {
+                            "id": 1,
+                            "title": "Pod 2",
+                            "type": "POD"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Pod 3",
+                            "type": "POD"
+                        },
+                        {
+                            "id": 3,
+                            "title": "Pod 4",
+                            "type": "POD"
+                        },
+                        {
+                            "id": 4,
+                            "title": "Pod 5",
+                            "type": "POD"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "title": "ชั้น 2",
+            "rooms": [
+                {
+                    "id": 0,
+                    "title": "",
+                    "beds": [
+                        {
+                            "id": 0,
+                            "title": "Bunk 1",
+                            "type": "BUNK"
+                        },
+                        {
+                            "id": 1,
+                            "title": "Bunk 2",
+                            "type": "BUNK"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Bunk 3",
+                            "type": "BUNK"
+                        },
+                        {
+                            "id": 3,
+                            "title": "Bunk 4",
+                            "type": "BUNK"
+                        }
+                    ]
+                },
+                {
+                    "id": 1,
+                    "title": "",
+                    "beds": [
+                        {
+                            "id": 4,
+                            "title": "Bunk 5",
+                            "type": "BUNK"
+                        },
+                        {
+                            "id": 5,
+                            "title": "Bunk 6",
+                            "type": "BUNK"
+                        },
+                        {
+                            "id": 6,
+                            "title": "Bunk 7",
+                            "type": "BUNK"
+                        },
+                        {
+                            "id": 7,
+                            "title": "Bunk 8",
+                            "type": "BUNK"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "ชั้น 3",
+            "rooms": [
+                {
+                    "id": 0,
+                    "title": "Private 1",
+                    "beds": [
+                        {
+                            "id": 0
+                        }
+                    ]
+                },
+                {
+                    "id": 1,
+                    "title": "Private 2",
+                    "beds": [
+                        {
+                            "id": 0
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
