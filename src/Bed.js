@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import cx from 'classnames';
-import keymirror from "key-mirror";
 import { Button } from 'react-bootstrap';
+import { STATUS } from './constants';
+import './Bed.css';
 
-const ROOM_STATUS = keymirror({
-    AVAILABLE,
-    BOOKED
-});
-
-const { AVAILABLE, BOOKED } = ROOM_STATUS;
+const { AVAILABLE, BOOKED } = STATUS;
 
 function cxStatus(status) {
     switch (status) {
@@ -50,15 +46,13 @@ export default class Bed extends Component {
     };
 
     render() {
-        const { title, type } = this.props;
-        const { status } = this.state;
+        const { title, type, status } = this.props;
+
         return (
             <Button
-                onClick={this.bindEvent(status)}
                 className={cx('bed', cxStatus(status), type)}
             >
                 <h2>{title}</h2>
-                <h3>{status}</h3>
             </Button>
         );
     }

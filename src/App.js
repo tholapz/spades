@@ -7,17 +7,21 @@ import './App.css';
 import AppNav from './AppNav';
 import Home from './Home';
 import Floorplan from './Floorplan';
-import routes from './routes';
+import BookingList from "./BookingList";
+import { ROUTES } from './constants';
 
-const { HOME, FLOORPLAN } = routes;
+const { HOME, FLOORPLAN, BOOKING } = ROUTES;
 
 let removeHashChange = noop;
 
 class App extends Component {
   state = {
-    route: HOME,
-
+    route: HOME
   };
+
+  componentWillMount() {
+    this.setState({ route: window.location.hash.substr(1) });
+  }
 
   componentDidMount() {
     removeHashChange = window.addEventListener('hashchange', () => {
@@ -35,8 +39,11 @@ class App extends Component {
     return (
       <div className="App">
         <AppNav/>
-        { this.state.route === HOME && <Home/> }
-        { this.state.route === FLOORPLAN && <Floorplan/> }
+        <div className="container">
+          { this.state.route.startsWith(HOME) && <Home/> }
+          { this.state.route.startsWith(FLOORPLAN) && <Floorplan id="0"/> }
+          { this.state.route.startsWith(BOOKING) && <BookingList /> }
+        </div>
       </div>
     );
   }

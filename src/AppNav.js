@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
-import routes from './routes';
+import { ROUTES } from './constants';
 
-const { HOME, FLOORPLAN } = routes;
+const { HOME, FLOORPLAN, BOOKING } = ROUTES;
 export default props => {
     return (
         <Navbar>
@@ -15,8 +15,8 @@ export default props => {
                 <NavItem eventKey={1} href={`#${FLOORPLAN}`}>
                     Floorplan
     </NavItem>
-                <NavItem eventKey={2} href="#">
-                    Link
+                <NavItem eventKey={2} href={`#${BOOKING}`}>
+                    Booking
     </NavItem>
                 <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
                     <MenuItem eventKey={3.1}>Action</MenuItem>
