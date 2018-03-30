@@ -52,7 +52,7 @@ export default class Bed extends Component {
             <Button
                 className={cx('bed', cxStatus(status), type)}
             >
-                <h2>{title}</h2>
+                <span>{title}</span>
             </Button>
         );
     }

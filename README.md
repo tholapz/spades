@@ -4,6 +4,8 @@
 - Undo last actions
 - Localization (lmao)
 - Fixed size <Bed/> button
+- Schema generate script
+- Modal booking slot
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
