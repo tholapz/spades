@@ -12,7 +12,7 @@ import DateBar from './DateBar';
 
 // Libs
 import loadStatuses from './loadStatuses';
-import { STATUS } from './constants';
+import { STATUS } from '../constants';
 
 // DATA
 import schema from './mockSchema.json';

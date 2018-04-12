@@ -5,9 +5,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import './App.css';
 import AppNav from './AppNav';
-import Home from './Home';
-import Floorplan from './Floorplan';
-import BookingList from "./BookingList";
+import Home from './components/Home';
+import Floorplan from './components/Floorplan';
+import BookingList from "./components/BookingList";
 import { ROUTES } from './constants';
 
 const { HOME, FLOORPLAN, BOOKING } = ROUTES;

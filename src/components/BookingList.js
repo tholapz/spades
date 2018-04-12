@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { PanelGroup, Panel, Table } from "react-bootstrap";
 import { keys } from 'lodash';
-import { ROUTES } from './constants';
+import { ROUTES } from '../constants';
 
 import Timeline from './Timeline';
 

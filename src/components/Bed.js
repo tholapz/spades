@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import cx from 'classnames';
 import { Button } from 'react-bootstrap';
-import { STATUS } from './constants';
+import { STATUS } from '../constants';
 import './Bed.css';
 
 const { AVAILABLE, BOOKED } = STATUS;
