@@ -508,3 +508,6 @@ input:last-child{
   text-transform: capitalize;
   font-weight: bold;
 }
+@media print {
+   .no-print { display:none; }
+}

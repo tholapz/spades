@@ -24,6 +24,7 @@ class Cards extends Component {
         this.onColumnDrop = this.onColumnDrop.bind(this);
         this.onCardDrop = this.onCardDrop.bind(this);
         this.getCardPayload = this.getCardPayload.bind(this);
+        this.printList = this.printList.bind(this);
         let z = 0;
         this.state = {
             scene: {
@@ -54,6 +55,9 @@ class Cards extends Component {
         };
     }
 
+    printList() {
+        window.print();
+    }
 
     render() {
         return (
@@ -93,6 +97,9 @@ class Cards extends Component {
                                 </div>
                         );
                     })}
+                    <div className="no-print">
+                    <button onClick={this.printList}>พิมพ์ชื่อแขกวันนี้</button>
+                    </div>
             </div>
         );
     }
