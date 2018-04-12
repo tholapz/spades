@@ -58,10 +58,8 @@ class Cards extends Component {
     render() {
         return (
             <div className="card-scene">
-
                     {this.state.scene.children.map((column) => {
                         return (
-
                                 <div className={cx(column.props.className, {
                                     error: column.children.length > column.props.maximum
                                 })}>
@@ -69,31 +67,32 @@ class Cards extends Component {
                                         {column.name}
                                         {` (${column.children.length}/${column.props.maximum})`}
                                     </div>
-                                    <Container {...column.props} groupName="col"
-                                        onDrop={e => this.onCardDrop(column.id, e)}
-                                        getChildPayload={index => this.getCardPayload(column.id, index)}
-                                        dragClass="card-ghost"
-                                        dropClass="card-ghost-drop"
-                                        onDragEnter={() => { console.log('drag enter:', column.id); }}
-                                        onDragLeave={() => { console.log('drag leave:', column.id); }}
-                                    >
-                                        {column.children.map(card => {
-                                            return (
-                                                <Draggable key={card.id}>
-                                                    <div {...card.props}>
-                                                        <p>
-                                                            {`${card.data.name.first} ${card.data.name.last}`}
-                                                        </p>
-                                                    </div>
-                                                </Draggable>
-                                            );
-                                        })}
-                                    </Container>
+                                    <div className="card-column-content">
+                                        <Container {...column.props} groupName="col"
+                                            onDrop={e => this.onCardDrop(column.id, e)}
+                                            getChildPayload={index => this.getCardPayload(column.id, index)}
+                                            dragClass="card-ghost"
+                                            dropClass="card-ghost-drop"
+                                            onDragEnter={() => { console.log('drag enter:', column.id); }}
+                                            onDragLeave={() => { console.log('drag leave:', column.id); }}
+                                        >
+                                            {column.children.map((card, index) => {
+                                                return (
+                                                    <Draggable key={card.id}>
+                                                        <div {...card.props}>
+                                                            <p>
+                                                                { index < column.props.maximum && `เตียงที่ ${index+1}: `}
+                                                                <span className="guest-name">{`${card.data.name.first} ${card.data.name.last}`}</span>
+                                                            </p>
+                                                        </div>
+                                                    </Draggable>
+                                                );
+                                            })}
+                                        </Container>
+                                    </div>
                                 </div>
-
                         );
                     })}
-
             </div>
         );
     }
