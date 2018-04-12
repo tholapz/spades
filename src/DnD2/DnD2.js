@@ -86,7 +86,7 @@ class Cards extends Component {
                                                         <div {...card.props}>
                                                             <p>
                                                                 { index < column.props.maximum && `เตียงที่ ${index+1}: `}
-                                                                <span className="guest-name">{`${card.data.name.first} ${card.data.name.last}`}</span>
+                                                                <span className="guest-name">{`${card.data.name.first[0]} ${card.data.name.last}, ${card.data.name.title}`}</span>
                                                             </p>
                                                         </div>
                                                     </Draggable>
