@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 
 import AppNav from './AppNav';
-import './App.css';
+import './App.css'
 
+import Routes from './Routes';
 class App extends Component {
 
   render() {
@@ -11,7 +12,9 @@ class App extends Component {
       <Router>
         <div>
           <AppNav/>
-          <Route exact path="/" component={() => { return <div/>}} />
+          <div className="container">
+            { [...Routes] }
+          </div>
         </div>
       </Router>
     );
