@@ -1,28 +1,28 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
+import moment from 'moment';
+import { booking } from '../booking.json';
+import Name from '../components/Name';
+import Calendar from '../components/Calendar';
 
-const DATA = [
-    {
-        id: 1,
-        name: {
-            title: 'Mr',
-            first: 'Kamol',
-            last: 'Treewatchararat'
-        },
-        email: 'tholapz@gmail.com',
-        bookingId: 'SSE',
-        checkin: '14/4/2018',
-        checkout: '15/4/2018',
-        guests: {
-            adults: 2,
-            children: 0
-        }
-    }
-];
-
-const name = ({title, first, last}) => {
-    return `${first[0]} ${last}, ${title}`;
-};
+// const DATA = [
+//     {
+//         id: 1,
+//         name: {
+//             title: 'Mr',
+//             first: 'Kamol',
+//             last: 'Treewatchararat'
+//         },
+//         email: 'tholapz@gmail.com',
+//         bookingId: 'SSE',
+//         checkin: '14/4/2018',
+//         checkout: '15/4/2018',
+//         guests: {
+//             adults: 2,
+//             children: 0
+//         }
+//     }
+// ];
 
 const noGuests = ({adults, children}) => {
     return `adults: ${adults}, chilren: ${children}`;
@@ -30,7 +30,7 @@ const noGuests = ({adults, children}) => {
 
 export default class Booking extends Component {
     render() {
-        const bookings = DATA;
+        const bookings = booking;
         return (
             <Table striped bordered condensed hover>
                 <thead>
@@ -39,17 +39,19 @@ export default class Booking extends Component {
                         <th>Name</th>
                         <th>check-in</th>
                         <th>check-out</th>
+                        <th>email</th>
                         <th>No. guests</th>
                     </tr>
                 </thead>
                 <tbody>
-                    { bookings.map(b => {
+                    { bookings.map((b, i) => {
                         return (
                             <tr>
-                                <td>{b.id}</td>
-                                <td>{name(b.name)}</td>
-                                <td>{b.checkin}</td>
-                                <td>{b.checkout}</td>
+                                <td>{i+1}</td>
+                                <td><Name {...b.name}/></td>
+                                <td><Calendar date={b.checkin}/></td>
+                                <td><Calendar date={b.checkout}/></td>
+                                <td><a href={`mailto:${b.email}?Subject=The%20Spades%20Hostel`}>{b.email}</a></td>
                                 <td>{noGuests(b.guests)}</td>
                             </tr>
                         )

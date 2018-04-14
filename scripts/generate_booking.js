@@ -1,29 +1,30 @@
 const uuid = require('../src/libs/uuid');
 const outputFileFn = require('../src/libs/outputFile');
 const fetch = require('isomorphic-fetch');
+const moment = require('moment');
 
 const path = process.env.OUTPUT_PATH || 'booking.json';
+const num = process.env.NUM || 5;
 
 const outputFile = outputFileFn(path);
 
 const checkinout = () => {
     return {
-        checkin: Date.now(),
-        checkout: Date.now()
+        checkin: moment().millisecond(0).second(0).minute(0).hour(0).valueOf(),
+        checkout: moment().add(3, 'days').millisecond(0).second(0).minute(0).hour(0).valueOf()
     };
 };
 
 const generateGuests = () => {
-    Math.random()
     return {
         adults: 2,
         children: 0,
     };
 };
 
-fetch('https://randomuser.me/api/?results=50')
+fetch(`https://randomuser.me/api/?results=${num}`)
 .then(resp => resp.json())
-.then(({ info, results }) => results)
+.then(({ results }) => results)
 .then( results => {
     return {
         booking: results.map(person => {
