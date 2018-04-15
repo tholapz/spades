@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
 import moment from 'moment';
-import { booking } from '../booking.json';
+import { booking } from '../mock_booking.json';
 import Name from '../components/Name';
 import Calendar from '../components/Calendar';
+import PrintThis from '../components/PrintThis';
 
 // const DATA = [
 //     {
@@ -32,32 +33,35 @@ export default class Booking extends Component {
     render() {
         const bookings = booking;
         return (
-            <Table striped bordered condensed hover>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>check-in</th>
-                        <th>check-out</th>
-                        <th>email</th>
-                        <th>No. guests</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    { bookings.map((b, i) => {
-                        return (
-                            <tr>
-                                <td>{i+1}</td>
-                                <td><Name {...b.name}/></td>
-                                <td><Calendar date={b.checkin}/></td>
-                                <td><Calendar date={b.checkout}/></td>
-                                <td><a href={`mailto:${b.email}?Subject=The%20Spades%20Hostel`}>{b.email}</a></td>
-                                <td>{noGuests(b.guests)}</td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </Table>
+            <div>
+                <PrintThis/>
+                <Table striped bordered condensed hover>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>check-in</th>
+                            <th>check-out</th>
+                            <th>email</th>
+                            <th>No. guests</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        { bookings.map((b, i) => {
+                            return (
+                                <tr>
+                                    <td>{i+1}</td>
+                                    <td><Name {...b.name}/></td>
+                                    <td><Calendar date={b.checkin}/></td>
+                                    <td><Calendar date={b.checkout}/></td>
+                                    <td><a href={`mailto:${b.email}?Subject=The%20Spades%20Hostel`}>{b.email}</a></td>
+                                    <td>{noGuests(b.guests)}</td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </Table>
+            </div>
         );
     }
 }

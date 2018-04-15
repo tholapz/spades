@@ -8,7 +8,7 @@ export default class Bed extends Component {
                 <Container groupName="col" onDrop={this.props.onCardDrop}>
                     {this.props.occupied && <Draggable>K Treewatchararat, Mr</Draggable>}
                 </Container>
-                {!this.props.occupied && <div className="no-guest">ห้องว่าง</div>}
+                {!this.props.occupied && <div className="no-guest">เตียงว่าง</div>}
             </div>
         );
     }

@@ -12,9 +12,9 @@ class App extends Component {
       <Router>
         <div>
           <AppNav/>
-          <div className="container">
-            { [...Routes] }
-          </div>
+            <div className="container">
+              { [...Routes] }
+            </div>
         </div>
       </Router>
     );
