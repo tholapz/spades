@@ -74,15 +74,29 @@ export default class Today extends Component {
     render() {
 
         return (
+            <div>
             <div className="card-container">
                 <div className="card-column-header">ห้อง 1</div>
                 <div className="card-column-content">
-                    {this.props.beds.map((bed, index) => (
+                    {this.props.beds.slice(0, 4).map((bed, index) => (
                         <Bed key={index} {...bed}
                             occupiedBy={this.findOccupant(bed.id)}
                             onCardDrop={this.handleCardDrop(index)}
                         />
                     ))}
+                </div>
+            </div>
+
+                <div className="card-container">
+                    <div className="card-column-header">ห้อง 1</div>
+                    <div className="card-column-content">
+                        {this.props.beds.slice(4, 8).map((bed, index) => (
+                            <Bed key={index} {...bed}
+                                occupiedBy={this.findOccupant(bed.id)}
+                                onCardDrop={this.handleCardDrop(index)}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
         );
