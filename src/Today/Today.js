@@ -20,6 +20,23 @@ const allocateBooking = ({ beds, booking }) => {
     return occupancy;
 };
 
+
+const offset = (sizes, n) => {
+    let answer = 0;
+    for (let index = 0; index < n; index++) {
+        answer += sizes[index];
+    }
+    return answer;
+};
+
+const makeChunks = (roomSizes, beds) => {
+    let chunks = [];
+    let bedsCopy = [...beds];
+    roomSizes.forEach(size => {
+        chunks.push(bedsCopy.splice(0, size));
+    });
+    return chunks;
+};
 export default class Today extends Component {
     static props = {
         beds: PropsType.array,
@@ -56,10 +73,7 @@ export default class Today extends Component {
 
     render() {
         const roomSizes = [4, 4, 8];
-        const chunks = [];
-        roomSizes.forEach(size => {
-            chunks.push(this.props.beds.splice(0, size));
-        });
+        const chunks = makeChunks(roomSizes, this.props.beds);
 
         return (
             <div>
@@ -70,7 +84,7 @@ export default class Today extends Component {
                             {beds.map((bed, index) => (
                                 <Bed key={index} {...bed}
                                     occupiedBy={this.findOccupant(bed.id)}
-                                    onCardDrop={this.handleCardDrop(index + 8 * nth)}
+                                    onCardDrop={this.handleCardDrop(index + offset(roomSizes, nth))}
                                 />
                             ))}
                         </div>
