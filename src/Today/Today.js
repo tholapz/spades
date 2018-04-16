@@ -10,7 +10,7 @@ import { booking } from '../mock_booking.json';
 
 const allocateBooking = ({ beds, booking }) => {
     const occupancy = [];
-    let bed = 2;
+    let bed = 0;
     booking.forEach(entry => {
         occupancy.push({
             guest: entry.name,
@@ -20,23 +20,6 @@ const allocateBooking = ({ beds, booking }) => {
     return occupancy;
 };
 
-const applyDrag = (arr, dragResult) => {
-    const { removedIndex, addedIndex, payload } = dragResult;
-    if (removedIndex === null && addedIndex === null) return arr;
-
-    const result = [...arr];
-    let itemToAdd = payload;
-
-    if (removedIndex !== null) {
-        itemToAdd = result.splice(removedIndex, 1)[0];
-    }
-
-    if (addedIndex !== null) {
-        result.splice(addedIndex, 0, itemToAdd);
-    }
-
-    return result;
-};
 export default class Today extends Component {
     static props = {
         beds: PropsType.array,
@@ -44,7 +27,7 @@ export default class Today extends Component {
     };
 
     static defaultProps = {
-        beds: generateItems(12, i => ({
+        beds: generateItems(30, i => ({
             id: i
         })),
         booking
@@ -72,32 +55,27 @@ export default class Today extends Component {
 
 
     render() {
+        const roomSizes = [4, 4, 8];
+        const chunks = [];
+        roomSizes.forEach(size => {
+            chunks.push(this.props.beds.splice(0, size));
+        });
 
         return (
             <div>
-            <div className="card-container">
-                <div className="card-column-header">ห้อง 1</div>
-                <div className="card-column-content">
-                    {this.props.beds.slice(0, 4).map((bed, index) => (
-                        <Bed key={index} {...bed}
-                            occupiedBy={this.findOccupant(bed.id)}
-                            onCardDrop={this.handleCardDrop(index)}
-                        />
-                    ))}
-                </div>
-            </div>
-
-                <div className="card-container">
-                    <div className="card-column-header">ห้อง 1</div>
-                    <div className="card-column-content">
-                        {this.props.beds.slice(4, 8).map((bed, index) => (
-                            <Bed key={index} {...bed}
-                                occupiedBy={this.findOccupant(bed.id)}
-                                onCardDrop={this.handleCardDrop(index)}
-                            />
-                        ))}
+                {chunks.map((beds, nth) => (
+                    <div className="card-container" key={nth}>
+                        <div className="card-column-header">ห้อง {`${nth + 1}`}</div>
+                        <div className="card-column-content">
+                            {beds.map((bed, index) => (
+                                <Bed key={index} {...bed}
+                                    occupiedBy={this.findOccupant(bed.id)}
+                                    onCardDrop={this.handleCardDrop(index + 8 * nth)}
+                                />
+                            ))}
+                        </div>
                     </div>
-                </div>
+                ))}
             </div>
         );
     }

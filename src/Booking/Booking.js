@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
-import moment from 'moment';
+
 import { booking } from '../mock_booking.json';
 import Name from '../components/Name';
 import Calendar from '../components/Calendar';
