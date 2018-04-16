@@ -4,7 +4,7 @@ const fetch = require('isomorphic-fetch');
 const moment = require('moment');
 
 const path = process.env.OUTPUT_PATH || 'booking.json';
-const num = process.env.NUM || 5;
+const num = process.env.NUM || 8;
 
 const outputFile = outputFileFn(path);
 
