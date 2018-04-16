@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { Draggable, Container } from "react-smooth-dnd";
+import Name from '../components/Name';
 
 export default class Bed extends Component {
     render() {
         return (
             <div className='card'>
                 <Container groupName="col" onDrop={this.props.onCardDrop}>
-                    {this.props.occupied && <Draggable>K Treewatchararat, Mr</Draggable>}
+                    {this.props.occupiedBy && <Draggable><Name {...this.props.occupiedBy.guest}/></Draggable>}
                 </Container>
-                {!this.props.occupied && <div className="no-guest">เตียงว่าง</div>}
+                {!this.props.occupiedBy && <div className="no-guest">เตียงว่าง</div>}
             </div>
         );
     }
