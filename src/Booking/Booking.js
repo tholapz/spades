@@ -1,40 +1,33 @@
 import React, { Component } from "react";
-import { Table } from "react-bootstrap";
+import { Table, Nav, NavItem } from "react-bootstrap";
 
-import { booking } from '../mock_booking.json';
+// import { booking } from '../mock_booking.json';
 import Name from '../components/Name';
 import Calendar from '../components/Calendar';
 import PrintThis from '../components/PrintThis';
 
-// const DATA = [
-//     {
-//         id: 1,
-//         name: {
-//             title: 'Mr',
-//             first: 'Kamol',
-//             last: 'Treewatchararat'
-//         },
-//         email: 'tholapz@gmail.com',
-//         bookingId: 'SSE',
-//         checkin: '14/4/2018',
-//         checkout: '15/4/2018',
-//         guests: {
-//             adults: 2,
-//             children: 0
-//         }
-//     }
-// ];
-
-const noGuests = ({adults, children}) => {
-    return `adults: ${adults}, chilren: ${children}`;
-};
+const booking = [
+    {
+        id: 1,
+        name: {
+            title: 'Mr',
+            first: 'Kamol',
+            last: 'Treewatchararat'
+        },
+        checkin: 1524070800000,
+        checkout: 1524270800000,
+        source: 'agoda',
+        type: 'Bed',
+        number: 2,
+        cost: 600
+    }
+];
 
 export default class Booking extends Component {
     render() {
         const bookings = booking;
         return (
             <div>
-                <PrintThis/>
                 <Table striped bordered condensed hover>
                     <thead>
                         <tr>
@@ -42,8 +35,10 @@ export default class Booking extends Component {
                             <th>Name</th>
                             <th>check-in</th>
                             <th>check-out</th>
-                            <th>email</th>
-                            <th>No. guests</th>
+                            <th>source</th>
+                            <th>type</th>
+                            <th>number</th>
+                            <th>cost</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,8 +49,10 @@ export default class Booking extends Component {
                                     <td><Name {...b.name}/></td>
                                     <td><Calendar date={b.checkin}/></td>
                                     <td><Calendar date={b.checkout}/></td>
-                                    <td><a href={`mailto:${b.email}?Subject=The%20Spades%20Hostel`}>{b.email}</a></td>
-                                    <td>{noGuests(b.guests)}</td>
+                                    <td>{b.source}</td>
+                                    <td>{b.type}</td>
+                                    <td>{b.number}</td>
+                                    <td>{b.cost}</td>
                                 </tr>
                             )
                         })}

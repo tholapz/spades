@@ -22,6 +22,13 @@ const generateGuests = () => {
     };
 };
 
+const accommodation = () => {
+    return {
+        type: 'Private', // Private, Pod, Bed,
+        number: 2
+    };
+}
+
 fetch(`https://randomuser.me/api/?results=${num}`)
 .then(resp => resp.json())
 .then(({ results }) => results)
@@ -31,11 +38,11 @@ fetch(`https://randomuser.me/api/?results=${num}`)
             return {
                 id: uuid(),
                 name: person.name,
-                email: person.email,
-                bookingId: person.id,
+                source: 'booking.com',
                 ...checkinout(),
-                guests: generateGuests()
-            }
+                accommodation: accommodation(),
+                cost: 200
+            };
         })
     }
 })
